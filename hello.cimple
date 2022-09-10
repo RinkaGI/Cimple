@@ -1,7 +1,0 @@
-start IO;
-
-startMain();
-
-print("Hola mundo");
-
-endMain();

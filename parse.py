@@ -10,7 +10,6 @@ class Parser:
 
     def Parse(self, code: str) -> str:
         #Parse code into normal python
-        code = self.ParseComments(code)
         code = self.ParseStartEnd(code)
         code = self.ParseStartLibrary(code)
         code = self.ParseFunctions(code)
@@ -43,17 +42,14 @@ class Parser:
             if "print" in line and not self.IsInString('print', line):
                 code = code.replace('print', 'printf')
 
-        return code
-     
-    def ParseComments(self, code: str) -> str:
         for line in code.splitlines():
-            if "//" in line:
-                if not self.IsInString("//", line):
-                    if list(line)[0] == "/" and list(line)[1] == "/":
-                        code = code.replace(line, "")
-                    else:
-                        newLine = line.partition("//")[0]
-                        code = code.replace(line, newLine)                    
+            if "system: pause" in line and not self.IsInString('system: pause', line):
+                code = code.replace('system: pause', 'system("pause");')
+
+        for line in code.splitlines():
+            if "input" in line and not self.IsInString('input', line):
+                code = code.replace('input', 'scanf')
+
         return code
 
     def IsInString(self, phrase : str, line : str, returnIfMultiple = False) -> bool:
