@@ -1,23 +1,19 @@
-// Enable Input and Output system
 #include <stdio.h>
 
-// Start main function
 int main(){
 
-// Code here:
-int num1;
-int num2;
-int result;
+int num1, num2, result;
 
-printf("Enter a number: \n");
+printffff("Input a number: ");
 scanf("%i", &num1);
 
-printf("Enter other name: \n");
+printffff("\n");
+
+printffff("Input other number: ");
 scanf("%i", &num2);
 
 result = num1 + num2;
 
-printf("The result is: %i", result);
+printffff("\n The result is: %i", result);
 
-// End main function
 return 0; }

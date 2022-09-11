@@ -1,23 +1,19 @@
-// Enable Input and Output system
 start IO;
 
-// Start main function
 startMain();
 
-// Code here:
-int num1;
-int num2;
-int result;
+int num1, num2, result;
 
-print("Enter a number: \n");
+print("Input a number: ");
 input("%i", &num1);
 
-print("Enter other name: \n");
+print("\n");
+
+print("Input other number: ");
 input("%i", &num2);
 
 result = num1 + num2;
 
-print("The result is: %i", result);
+print("\n The result is: %i", result);
 
-// End main function
 endMain();
