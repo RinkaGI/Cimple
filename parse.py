@@ -13,6 +13,7 @@ class Parser:
         code = self.ParseStartEnd(code)
         code = self.ParseStartLibrary(code)
         code = self.ParseFunctions(code)
+        code = self.parseInputVariables(code)
 
         #Dump code to file
         with open("output.c", "w") as f:
@@ -49,6 +50,19 @@ class Parser:
         for line in code.splitlines():
             if "input" in line and not self.IsInString('input', line):
                 code = code.replace('input', 'scanf')
+
+        return code
+
+    def parseInputVariables(self, code: str) -> str:
+        for line in code.splitlines():
+            if "inputInteger" in line and not self.IsInString('inputInteger', line):
+                code = code.replace("inputInteger", "%i")
+            if "inputString" in line and not self.IsInString('inputString', line):
+                code = code.replace("inputString", "%s")
+            if "inputDouble" in line and not self.IsInString('inputDouble', line):
+                code = code.replace("inputDouble", "%lf")
+            if "inputFloat" in line and not self.IsInString('inputFloat', line):
+                code = code.replace("inputFloat", "%f")
 
         return code
 
